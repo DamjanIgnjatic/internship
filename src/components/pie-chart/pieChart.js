@@ -1,5 +1,6 @@
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
+import "./pie-chart.scss";
 
 export default function PieChart({ data }) {
   const generateRandomColor = () =>
@@ -17,7 +18,6 @@ export default function PieChart({ data }) {
     countOfManufacturer[product.manufacturer.name]++;
   });
 
-  console.log(countOfManufacturer);
   const chartData = {
     labels: newData.map((m) => m),
     datasets: [
@@ -34,7 +34,7 @@ export default function PieChart({ data }) {
   };
 
   return (
-    <div>
+    <div className="pie-chart">
       <Pie
         data={chartData}
         options={{

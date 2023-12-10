@@ -1,6 +1,6 @@
 import Button from "../button/button";
 
-export default function Product({ data, onDelete }) {
+export default function Product({ data, onDelete, setEdit }) {
   const formattedPrice = new Intl.NumberFormat("en-de", {
     style: "currency",
     currency: "EUR",
@@ -28,7 +28,7 @@ export default function Product({ data, onDelete }) {
         </div>
         <div className="product-price">
           <p>{formattedPrice.format(data.price)}</p>
-
+          <Button>Edit Product</Button>
           <Button
             onClick={() => onDelete(data.id)}
             color="#f8f8f8"

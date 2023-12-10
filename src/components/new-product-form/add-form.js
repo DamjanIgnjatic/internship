@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../button/button";
-import "./add-form";
+import "./add.scss";
 
 export default function Form({ handleProduct }) {
   const [name, setName] = useState("");

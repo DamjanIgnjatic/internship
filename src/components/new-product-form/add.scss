@@ -1,5 +1,4 @@
 @import "../../style/global/variable";
-
 .form-add-product {
   display: flex;
   flex-direction: column;
@@ -8,15 +7,15 @@
   border: 3px solid $orange-dark;
   padding: 2rem;
   border-radius: 3rem;
-  max-width: 37rem;
+  max-width: 47rem;
   width: 100%;
-  margin-left: auto;
+  margin: 0 auto;
 
   div {
-    max-width: 35rem;
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     label {
       margin-right: 0.5rem;
     }

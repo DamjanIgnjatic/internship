@@ -26,7 +26,7 @@ const initalData = [
     id: crypto.randomUUID(),
     name: "Panklav",
     price: "50",
-    imageUrl: "images/apple-watch.jpg",
+    imageUrl: "images/nike-lifestyle.jpg",
     description: "Medicine two Description",
     date: new Date().toLocaleDateString("de-DE"),
     manufacturer: {
@@ -39,7 +39,7 @@ const initalData = [
     id: crypto.randomUUID(),
     name: "Amoksicilin",
     price: "100",
-    imageUrl: "images/apple-watch.jpg",
+    imageUrl: "images/nike-running.jpg",
     description: "Medicine three Description",
     date: new Date().toLocaleDateString("de-DE"),
     manufacturer: {
@@ -52,7 +52,7 @@ const initalData = [
     id: crypto.randomUUID(),
     name: "Voltaren gel",
     price: "30",
-    imageUrl: "images/apple-watch.jpg",
+    imageUrl: "images/nike-lifestyle.jpg",
     description: "Medicine Four Description",
     date: new Date().toLocaleDateString("de-DE"),
     manufacturer: {
@@ -91,7 +91,7 @@ const initalData = [
     id: crypto.randomUUID(),
     name: "Tothema kapsule",
     price: "33",
-    imageUrl: "images/apple-watch.jpg",
+    imageUrl: "images/nike-lifestyle.jpg",
     description: "Medicine Six Description",
     date: new Date().toLocaleDateString("de-DE"),
     manufacturer: {
@@ -104,7 +104,7 @@ const initalData = [
     id: crypto.randomUUID(),
     name: "Klometol",
     price: "92",
-    imageUrl: "images/apple-watch.jpg",
+    imageUrl: "images/macbook.jpg",
     description: "Medicine Seven Description",
     date: new Date().toLocaleDateString("de-DE"),
     manufacturer: {
@@ -117,7 +117,7 @@ const initalData = [
     id: crypto.randomUUID(),
     name: "Smecta",
     price: "44",
-    imageUrl: "images/apple-watch.jpg",
+    imageUrl: "images/nike-running.jpg",
     description: "Drug Eight Description",
     date: new Date().toLocaleDateString("de-DE"),
     manufacturer: {
@@ -145,6 +145,7 @@ export default function App() {
   const [addProduct, setAddProduct] = useState(false);
   const [activePage, setActivePage] = useState("products");
   const [choseChart, setChoseChart] = useState(true);
+  const [sortBy, setSortBy] = useState("alphabetically");
 
   function handleProduct(newProduct) {
     setData((data) => [...data, newProduct]);
@@ -155,25 +156,42 @@ export default function App() {
     setData((data) => data.filter((product) => product.id !== id));
   }
 
+  let sortedData;
+  if (sortBy === "alphabetically") {
+    sortedData = data.slice().sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  if (sortBy === "price-down") {
+    sortedData = data.slice().sort((a, b) => Number(b.price) - Number(a.price));
+  }
+
+  if (sortBy === "price-up") {
+    sortedData = data.slice().sort((a, b) => Number(a.price) - Number(b.price));
+  }
+
   return (
     <div className="app">
       <Sidebar setActivePage={setActivePage} activePage={activePage} />
 
       <div className="products">
-        {activePage === "products" && (
+        {activePage === "products" && addProduct && (
+          <Form handleProduct={handleProduct} />
+        )}
+
+        {activePage === "products" && !addProduct && (
           <>
-            <Products data={data} onDelete={handleDeleteProduct} />
+            <div className="filter">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+              >
+                <option value="price-down">Price Down</option>
+                <option value="price-up">Price Up</option>
+                <option value="alphabetically">A-Z</option>
+              </select>
+            </div>
 
-            <Button
-              size="1.6"
-              bgColor="rgba(102, 255, 117, 0.50)"
-              borderColor="rgba(0, 202, 20, 0.50)"
-              onClick={() => setAddProduct(!addProduct)}
-            >
-              {addProduct ? "Close" : "Add New Product"}
-            </Button>
-
-            {addProduct && <Form handleProduct={handleProduct} />}
+            <Products data={sortedData} onDelete={handleDeleteProduct} />
           </>
         )}
 
@@ -181,12 +199,27 @@ export default function App() {
 
         {activePage === "statistics" && (
           <>
-            {choseChart ? <BarChart data={data} /> : <PieChart data={data} />}
+            {choseChart ? (
+              <BarChart data={sortedData} />
+            ) : (
+              <PieChart data={sortedData} />
+            )}
 
             <Button onClick={() => setChoseChart((a) => !a)}>
               {choseChart ? "Manufacturer Chart >" : "< Medicine Chart"}
             </Button>
           </>
+        )}
+
+        {activePage === "products" && (
+          <Button
+            size="1.6"
+            bgColor="rgba(102, 255, 117, 0.50)"
+            borderColor="rgba(0, 202, 20, 0.50)"
+            onClick={() => setAddProduct(!addProduct)}
+          >
+            {addProduct ? "Close" : "Add New Product"}
+          </Button>
         )}
       </div>
     </div>

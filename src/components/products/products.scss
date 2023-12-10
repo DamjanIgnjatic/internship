@@ -1,7 +1,7 @@
 @import "../../style/global/variable";
 
 .products {
-  background-color: #1b1b1b;
+  background-color: $secondary-dark;
   padding: 2rem;
   border-radius: 1rem;
   display: flex;
@@ -81,9 +81,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-          }
-
-          .date {
           }
         }
 
