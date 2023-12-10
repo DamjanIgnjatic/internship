@@ -1,0 +1,25 @@
+@import "../../style/global/variable";
+
+.about {
+  font-size: map-get($font-sizes, "l");
+  h1 {
+    margin-bottom: 5rem;
+  }
+
+  &--content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    span {
+      margin-left: 2px;
+    }
+
+    .description {
+      .text {
+        display: block;
+        margin: 5px 0 0;
+      }
+    }
+  }
+}

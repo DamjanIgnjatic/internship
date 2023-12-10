@@ -1,0 +1,26 @@
+// Fonts
+$primary-font: "Almarai", sans-serif;
+
+$font-weights: (
+  "regular": 400,
+  "bold": 700,
+);
+
+$font-sizes: (
+  "base": 1.6rem,
+  "l": 2rem,
+);
+
+// colors
+$main-dark: #212121;
+$main-white: #fff;
+$gray-light: #f8f8f8;
+$gray-dark: #424242;
+$orange-light: rgba(255, 158, 87, 0.8);
+$orange-dark: rgba(255, 148, 70, 0.5);
+$brown-shadow: rgba(85, 37, 1, 0.5);
+$green: rgba(102, 255, 117, 0.5);
+$red: red;
+
+// Shadows
+$green-shadow: 5px 5px 20px 0px rgba(44, 108, 51, 0.2);

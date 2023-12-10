@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  line-height: 1;
+  font-family: "Almarai", sans-serif;
+  color: #f8f8f8;
+  font-weight: 400;
+  background-color: #212121;
+  font-size: 1.6rem;
+}
+
+.app {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 2rem;
+  max-width: 153.6rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5rem 3.2rem;
+}
+
+.btn {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 148, 70, 0.5);
+  box-shadow: 0.5rem 0.5rem 2rem 0px rgba(85, 37, 1, 0.5);
+  padding: 0.4rem 2rem;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.btn:hover {
+  background: rgba(255, 148, 70, 0.5);
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+a:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+a:hover {
+  color: rgba(255, 148, 70, 0.5);
+}
+a.active {
+  color: rgba(255, 158, 87, 0.8);
+}
+
+.form-add-product {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  border: 3px solid rgba(255, 148, 70, 0.5);
+  padding: 2rem;
+  border-radius: 3rem;
+  max-width: 37rem;
+  width: 100%;
+  margin-left: auto;
+}
+.form-add-product div {
+  max-width: 35rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.form-add-product div label {
+  margin-right: 0.5rem;
+}
+.form-add-product div input {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin-left: auto;
+}
+
+/*# sourceMappingURL=style.css.map */
