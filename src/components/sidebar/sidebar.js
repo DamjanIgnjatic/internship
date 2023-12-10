@@ -18,6 +18,14 @@ export default function Sidebar({ setActivePage, activePage }) {
       >
         About App
       </a>
+
+      <a
+        className={`${activePage === "statistics" ? "active" : ""}`}
+        onClick={() => setActivePage(() => "statistics")}
+        href="#statistics"
+      >
+        Statistics
+      </a>
     </div>
   );
 }
